@@ -1,0 +1,9 @@
+*/bin
+*/include
+*/lib
+*/pyvenv.cfg
+*.pyc
+*obd.py
+*test2.py
+*tkinterTest.py
+*/TestingScripts
