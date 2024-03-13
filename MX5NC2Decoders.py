@@ -31,3 +31,11 @@ def steeringAngDecode(messages):
     d = d[3:] # chop off mode and PID bytes
     v = (bytes_to_int(d) -23048) / 20 # In theory cleans up output
     return v 
+
+def OneZero(messages):
+    """ For True/False outputs """
+    d = messages[0].data # only operate on a single message
+    dTrim = d[3:] #Example of data b\x11\x01\x00 - This is unneeded > b\x11\x01\
+    dInt = bytes_to_int(dTrim) 
+    v = True if dInt is not 0 else False
+    return v  # Return True/False

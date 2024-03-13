@@ -8,23 +8,23 @@ from MX5NC2Decoders import *
 # Steering wheel (ABS thing) is 760, not 720
 
 
-TPMS1Pr = OBDCommand("TPMS",         # name
-               "Engine RPM",   # description
-               b"22c901",        # command
-               0,            # number of return bytes to expect
-               TPMS,            # decoding function
-               ECU.ALL,     # (optional) ECU filter
-               True,
-               b'720')             # (optional) allow a "01" to be added for speed
-
-MX5_BRK_SWC = OBDCommand("MX5 Brake Switch",# - Needs testing
-               "Check if Brake is pressed",   # description
+MX5_BRK_SW = OBDCommand("MX5 Brake Switch",# - Tested, returns 2 if brake is pressed at all.
+               "On/Off Check if brake oedak is pressed/engaged",   # description
                b"221101",        # command
                4,            # number of return bytes to expect
-               raw,            # decoding function
-               ECU.ALL,     # (optional) ECU filter
-               True,       # (optional) allow a "01" to be added for speed 
-               b'7e0')        # 7E0 is default  
+               OneZero,            # decoding function
+               ECU.ALL,     
+               True,       
+               b'7e0')        # 7E0 is default   
+
+MX5_NEUTRAL_SW = OBDCommand("Park/Neutral Position Switch",# - Needs testing
+    "On/Off Park/Neutral detection.  Returns 0 (False) if in gear, else 4",  # description
+    b"22a211",        # Mode+PID, no 0x
+    4,              
+    OneZero,            
+    ECU.ALL,        
+    True,           
+    b'7e0') 
 
 MX5_WHL_ANG = OBDCommand("MX5 Steering Wheel Position",# - Works
                "Check if Brake is pressed",   # description

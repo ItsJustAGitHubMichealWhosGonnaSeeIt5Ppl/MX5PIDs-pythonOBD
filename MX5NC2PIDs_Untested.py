@@ -29,25 +29,7 @@ TPMS1Pr = OBDCommand("TPMS",         # name
                TPMS,            # decoding function
                ECU.ALL,     
                True,
-               b'720')             # (optional) allow a "01" to be added for speed
-
-MX5_BRK_SW = OBDCommand("MX5 Brake Switch",# - Needs testing
-               "Check if Brake is pressed/engaged",   # description
-               b"221101",        # command
-               4,            # number of return bytes to expect
-               raw,            # decoding function
-               ECU.ALL,     
-               True,       
-               b'7e0')        # 7E0 is default  
-
-MX5_NEUTRAL_SW = OBDCommand("Park/Neutral Position Switch",# - Needs testing
-    "On/Off Park/Neutral detection",  # description
-    b"22a211",        # Mode+PID, no 0x
-    5,              
-    raw,            
-    ECU.ALL,        
-    True,           
-    b'7e0')         
+               b'720')             # (optional) allow a "01" to be added for speed        
 
 MX5_TIRE_TEMP = OBDCommand("Tire Temperture sensor",# - Needs testing
     "Tire temp reading for all 4 wheels",  # description
@@ -119,4 +101,4 @@ MX5_TIRE_RPM = OBDCommand("Tire Revolutions Per Mile(I have no idea)",# - Needs 
     raw,            
     ECU.ALL,        
     True,           
-    b'7e0')         
+    b'7e0')

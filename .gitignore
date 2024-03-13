@@ -3,7 +3,7 @@
 */lib
 */pyvenv.cfg
 *.pyc
-*obd.py
+*obd*.py
 *test2.py
 *tkinterTest.py
 */TestingScripts
