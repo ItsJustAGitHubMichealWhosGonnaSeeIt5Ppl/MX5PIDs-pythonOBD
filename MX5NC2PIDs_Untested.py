@@ -48,52 +48,7 @@ MX5_CC_V = OBDCommand("Cruise Control Voltage",# - Needs testing
     ECU.ALL,        
     True,           
     b'7e0')         
-
-MX5_AC_REFRG_SW = OBDCommand("AC Refrigerant Switch ",# - Needs testing
-    "On/Off A/C Refrigerant Pressure Switch",  # description
-    b"221104",        # Mode+PID, no 0x
-    5,              
-    raw,            
-    ECU.ALL,        
-    True,           
-    b'7e0')         
-
-MX5_AC_RELAY = OBDCommand("AC Relay",# - Needs testing
-    "On/Off A/C Relay",  # description
-    b"221101",        # Mode+PID, no 0x
-    5,              
-    raw,            
-    ECU.ALL,        
-    True,           
-    b'7e0')         
-
-MX_5_ACCL_PDL = OBDCommand("Full range accelerator pedal",# - Needs testing
-    "Accel Pedal Position (full range)",  # description
-    b"221340",        # Mode+PID, no 0x
-    5,              
-    raw,            
-    ECU.ALL,        
-    True,           
-    b'7e0')         
-
-MX5_BRKCLTCH_PRES_SW = OBDCommand("Brake Pressure Applied Switch + Clutch position switch",# - Needs testing
-    "On/Off Brake Pressure Applied + Clutch Pedal Position Switch. Clutch is Byte 0, Brake is byte 1",  # description
-    b"22a211",        # Mode+PID, no 0x
-    5,              
-    raw,            
-    ECU.ALL,        
-    True,           
-    b'7e0') 
-
-MX5_INGEAR_SW = OBDCommand("In gear switch",# - Needs testing
-    "On/Off In gear switch",  # description
-    b"221101",        # Mode+PID, no 0x
-    5,              
-    raw,            
-    ECU.ALL,     
-    True,         
-    b'7e0')        
-
+    
 MX5_TIRE_RPM = OBDCommand("Tire Revolutions Per Mile(I have no idea)",# - Needs testing
     "Revolutions Per Mile, alleged math ((A*256)+B)",  # description
     b"2216f0",        # Mode+PID, no 0x
