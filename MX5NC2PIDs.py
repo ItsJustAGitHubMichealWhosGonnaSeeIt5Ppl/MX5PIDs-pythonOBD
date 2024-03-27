@@ -18,7 +18,7 @@ MX5_BRK_SW = OBDCommand("MX5 Brake Switch",# - Tested, returns 2 if brake is pre
     b'7e0')        # 7E0 is default   
 
 MX5_NEUTRAL_SW = OBDCommand("Park/Neutral Position Switch",# - Works
-    "On/Off Park/Neutral detection.  Returns 0 (False) if in gear, else 4",  # description
+    "On/Off Park/Neutral detection.  Returns 0 (False) if NOT in neutral, else 4",  # description
     b"22a211",        # Mode+PID, no 0x
     4,
     OneZero,
@@ -45,7 +45,11 @@ MX_5_ACCL_PDL = OBDCommand("Full range accelerator pedal",# - Works
     b'7e0')
 
 MX5_BRKCLTCH_PRES_SW = OBDCommand("Brake Pressure Applied Switch + Clutch position switch",# - Works 
-    "On/Off Brake Pressure Applied + Clutch Pedal Position Switch. 0 no pedal, 1 clutch, 2 brake, 3 brake+clutchs",  # description
+    """ On/Off Brake Pressure Applied + Clutch Pedal Position Switch. 
+    0 no pedal, 
+    1 clutch, 
+    2 brake, 
+    3 brake+clutch """,  # description
     b"22a211",
     5,
     brakeClutch,
@@ -53,8 +57,8 @@ MX5_BRKCLTCH_PRES_SW = OBDCommand("Brake Pressure Applied Switch + Clutch positi
     True,
     b'7e0')
 
-MX5_INGEAR_SW = OBDCommand("In gear switch",# - Needs testing
-    "On/Off In gear switch",  # description
+MX5_INGEAR_SW = OBDCommand("In gear switch",
+    "On/Off In gear switch", 
     b"221101",
     4,
     OneZero,
@@ -62,8 +66,8 @@ MX5_INGEAR_SW = OBDCommand("In gear switch",# - Needs testing
     True,
     b'7e0')
 
-MX5_AC_REFRG_SW = OBDCommand("AC Refrigerant Switch ",# - Needs testing
-    "On/Off A/C Refrigerant Pressure Switch",  # description
+MX5_AC_REFRG_SW = OBDCommand("AC Refrigerant Switch ",
+    "On/Off A/C Refrigerant Pressure Switch",
     b"221104",# Mode+PID, no 0x
     5,
     OneZero,
@@ -71,11 +75,19 @@ MX5_AC_REFRG_SW = OBDCommand("AC Refrigerant Switch ",# - Needs testing
     True,
     b'7e0')
 
-MX5_AC_RELAY = OBDCommand("AC Relay",# - Needs testing
-    "On/Off A/C Relay",  # description
-    b"221101",        # Mode+PID, no 0x
+MX5_AC_RELAY = OBDCommand("AC Relay",
+    "On/Off A/C Relay",
+    b"221101",
     5,
     OneZero,
     ECU.ALL,
     True,
     b'7e0')
+MX5_CC_V = OBDCommand("Cruise Control Voltage (resistance)",
+    "Cruise Control voltage resistance reading.  Can be used to view button presses",
+    b"22a216",
+    5,              
+    raw,            
+    ECU.ALL,        
+    True,           
+    b'7e0')        

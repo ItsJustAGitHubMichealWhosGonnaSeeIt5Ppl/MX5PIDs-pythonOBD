@@ -20,17 +20,6 @@ OBJECT_NAME = OBDCommand("Nice Name",# - Needs testing
     b'7e0')         # Header if not 7E0, no 0x
 
 
-
-
-TPMS1Pr = OBDCommand("TPMS",         # name
-               "Engine RPM",   # description
-               b"22c901",        # command
-               0,            # number of return bytes to expect
-               TPMS,            # decoding function
-               ECU.ALL,     
-               True,
-               b'720')             # (optional) allow a "01" to be added for speed        
-
 MX5_TIRE_TEMP = OBDCommand("Tire Temperture sensor",# - Needs testing
     "Tire temp reading for all 4 wheels",  # description
     b"22c902",        # Mode+PID, no 0x
@@ -39,15 +28,6 @@ MX5_TIRE_TEMP = OBDCommand("Tire Temperture sensor",# - Needs testing
     ECU.ALL,        
     True,           
     b'720')         
-
-MX5_CC_V = OBDCommand("Cruise Control Voltage",# - Needs testing
-    "Cruise Control voltage reading",  # description
-    b"22a216",        # Mode+PID, no 0x
-    5,              
-    raw,            
-    ECU.ALL,        
-    True,           
-    b'7e0')         
     
 MX5_TIRE_RPM = OBDCommand("Tire Revolutions Per Mile(I have no idea)",# - Needs testing
     "Revolutions Per Mile, alleged math ((A*256)+B)",  # description

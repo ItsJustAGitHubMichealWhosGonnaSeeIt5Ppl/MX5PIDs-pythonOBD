@@ -23,14 +23,14 @@ def TPMS(messages): # Untested
     rl = messages[3].data
     d = d[3:] # chop off mode and PID bytes
     v = bytes_to_int(d) / 4.0  # helper function for converting byte arrays to ints
-    return v * 0.199136814274 # construct a Pint Quantity
+    return v * 0.199136814274 
 
 def acclPercent(messages):
-    """ Not really a decoder """
-    d = messages[0].data # only operate on a single message
+    """ Converts raw accelerator pos to percentage (0 - 100)"""
+    d = messages[0].data 
     d = d[3:] # chop off mode and PID bytes
     v = bytes_to_int(d) / 652.80  # helper function for converting byte arrays to ints
-    return v# construct a Pint Quantity
+    return v #Float
 
 def brakeClutch(messages):
     """ 
@@ -41,14 +41,14 @@ def brakeClutch(messages):
     d = messages[0].data # only operate on a single message
     d = d[4:] # chop off mode and PID bytes
     v = bytes_to_int(d) # helper function for converting byte arrays to ints
-    return v# construct a Pint Quantity
+    return v #Int
 
 def steeringAngDecode(messages):
     """ Decode steering wheel pos """
     d = messages[0].data # only operate on a single message
     d = d[3:] # chop off mode and PID bytes
-    v = (bytes_to_int(d) -23048) / 20 # In theory cleans up output
-    return v 
+    v = (bytes_to_int(d) -23048) / 20 #
+    return v #Int Steering range 0 - ~900
 
 def OneZero(messages):
     """ For True/False outputs """
@@ -56,4 +56,4 @@ def OneZero(messages):
     dTrim = d[3:] #Example of data b\x11\x01\x00 - This is unneeded > b\x11\x01\
     dInt = bytes_to_int(dTrim) 
     v = True if dInt is not 0 else False
-    return v  # Return True/False
+    return v  # True/False
